@@ -15,13 +15,11 @@ CREATE TABLE employee(
 	first_name			VARCHAR(50),
 	last_name			VARCHAR(50),
 	employee_department	INT,
-	boss_id				int,
-	FOREIGN KEY (employee_department) REFERENCES employee_department(id)
+	boss_id				int
 );
 CREATE TABLE boss(
 	id					SERIAL PRIMARY KEY,
-	employee_id			INT,
-	FOREIGN KEY (employee_id) REFERENCES employee(id)
+	employee_id			INT
 );
 
 
@@ -32,8 +30,7 @@ CREATE TABLE employee_hobby(
 );
 CREATE TABLE employee_hobby_relational(
 	id_employee			INT REFERENCES employee(id),
-	id_hobby			INT REFERENCES employee_hobby(id),
-	CONSTRAINT hobby_employee PRIMARY KEY(id_employee,id_hobby)
+	id_hobby			INT REFERENCES employee_hobby(id)
 );
 
 --Insertions
