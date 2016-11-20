@@ -2,31 +2,34 @@
 -- NOTE: Please, don't add sentence to create database in this script file.
 --       You can create database locally to test it.
 --       Consider add ';' at end sentence.
-
-
-
-
-
 CREATE TABLE employee_department (
 	id					SERIAL PRIMARY KEY,
 	name				VARCHAR(50),
-	description			VARCHAR(250)	
+	description			VARCHAR(250)
 );
 
-CREATE TABLE employee (
+
+
+CREATE TABLE employee(
 	id					SERIAL PRIMARY KEY,
 	first_name			VARCHAR(50),
 	last_name			VARCHAR(50),
 	employee_department	INT,
+	boss_id				int,
 	FOREIGN KEY (employee_department) REFERENCES employee_department(id)
 );
+CREATE TABLE boss(
+	id					SERIAL PRIMARY KEY,
+	employee_id			INT,
+	FOREIGN KEY (employee_id) REFERENCES employee(id)
+);
+
+
 CREATE TABLE employee_hobby(
 	id					SERIAL PRIMARY KEY,
 	name				VARCHAR(50),
 	description			VARCHAR(250)	
 );
-
-
 CREATE TABLE employee_hobby_relational(
 	id_employee			INT REFERENCES employee(id),
 	id_hobby			INT REFERENCES employee_hobby(id),
@@ -61,5 +64,8 @@ INSERT INTO employee_hobby_relational(id_employee,id_hobby) VALUES(4,1);
 INSERT INTO employee_hobby_relational(id_employee,id_hobby) VALUES(4,2);
 INSERT INTO employee_hobby_relational(id_employee,id_hobby) VALUES(4,3);
 
+INSERT INTO boss(employee_id) VALUES(3);
+
+UPDATE  employee SET boss_id=1;
 
 -- ...
