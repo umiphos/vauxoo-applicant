@@ -14,14 +14,9 @@ CREATE TABLE employee(
 	id					SERIAL PRIMARY KEY,
 	first_name			VARCHAR(50),
 	last_name			VARCHAR(50),
-	employee_department	INT,
-	boss_id				int
+	employee_department	INT REFERENCES employee_department(id),
+	boss_id				INT REFERENCES employee (id)
 );
-CREATE TABLE boss(
-	id					SERIAL PRIMARY KEY,
-	employee_id			INT
-);
-
 
 CREATE TABLE employee_hobby(
 	id					SERIAL PRIMARY KEY,
@@ -42,10 +37,10 @@ INSERT INTO employee_department(name,description) VALUES('Department_E','Departm
 INSERT INTO employee_department(name,description) VALUES('Department_F','Department F for employees');
 
 
-INSERT INTO employee(first_name,last_name,employee_department) VALUES('Usuario_A','TEST_1',1);
-INSERT INTO employee(first_name,last_name,employee_department) VALUES('Usuario_B','TEST_2',1);
-INSERT INTO employee(first_name,last_name,employee_department) VALUES('Usuario_C','TEST_3',2);
-INSERT INTO employee(first_name,last_name,employee_department) VALUES('Usuario_D','TEST_4',3);
+INSERT INTO employee(first_name,last_name,employee_department,boss_id) VALUES('Usuario_A','TEST_1',1,1);
+INSERT INTO employee(first_name,last_name,employee_department,boss_id) VALUES('Usuario_B','TEST_2',1,1);
+INSERT INTO employee(first_name,last_name,employee_department,boss_id) VALUES('Usuario_C','TEST_3',2,1);
+INSERT INTO employee(first_name,last_name,employee_department,boss_id) VALUES('Usuario_D','TEST_4',3,1);
 
 INSERT INTO employee_hobby(name,description) VALUES('Hobby_1','Hobby 1 descriptions for description purposes');
 INSERT INTO employee_hobby(name,description) VALUES('Hobby_2','Hobby 2 descriptions for description purposes');
@@ -60,9 +55,3 @@ INSERT INTO employee_hobby_relational(id_employee,id_hobby) VALUES(3,3);
 INSERT INTO employee_hobby_relational(id_employee,id_hobby) VALUES(4,1);
 INSERT INTO employee_hobby_relational(id_employee,id_hobby) VALUES(4,2);
 INSERT INTO employee_hobby_relational(id_employee,id_hobby) VALUES(4,3);
-
-INSERT INTO boss(employee_id) VALUES(3);
-
-UPDATE  employee SET boss_id=1;
-
--- ...
