@@ -1,8 +1,3 @@
-"""
-Your module documentation here
-"""
-
-
 class PrimeClass(object):
 	"""
 	This is a class to get if a given number is odd or not.
