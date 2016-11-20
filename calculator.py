@@ -1,16 +1,20 @@
 """
-Your module documentation here
+This class is used to return the sum of a list of integers.
+Notes:
+	it does not validates if the values are integers
+	there are easy ways to do this
+	there is also more pythonic ways to do this(currently working on them)
 """
 
 
 class CalculatorClass(object):
-    """
-    Your class documentation here
-    """
-
-    def sum(self, num_list):
-        """
-        Your method documentation here
-        """
-        # your sum code here
-        return "not implement yet"  # Remove this dummy line
+	pass
+	"""
+	num_list: A list of integers.
+	sum_of_i: This variable has the elements summed for the final result
+	"""
+	def sum(self,num_list):
+		sum_of_i=0
+		for i in num_list:
+			sum_of_i+=i
+		return sum_of_i
