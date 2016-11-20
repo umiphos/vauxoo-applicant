@@ -5,7 +5,7 @@ class PrimeClass(object):
 	Attributes:
 		
 	"""
-	def is_prime(num_int):
+	def is_prime(self,num_int):
 		"""
 		num_int: An integer that is going to be processed and it will return if is or not an odd number.
 		"""
